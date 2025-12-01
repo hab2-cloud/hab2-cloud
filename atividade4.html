@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Robotron 2000</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+    /* ==================== CSS COMPLETO (inline) ==================== */
+
+    :root {
+        --main-cinza: #CCCCCC;
+        --main-branco: #FFFFFF;
+        --main-preto: #000000;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        background: url(img/fundo.jpg) center/cover no-repeat;
+        padding: 0;
+        margin: 0;
+        font-weight: 300;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+    }
+
+    body, input { font-family: 'Teko', sans-serif; color: var(--main-branco); }
+
+    main {
+        width: 90vw;
+        height: 86vh;
+        margin: 6vh auto;
+        display: flex;
+        gap: 1.5vw;
+        align-items: stretch;
+    }
+
+    /* ROBOTRON AREA */
+    .robotron {
+        background: url(img/estrutura.png) no-repeat center;
+        background-size: contain;
+        flex-basis: 40%;
+        position: relative;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .robo {
+        height: 100%;
+        z-index: 2;
+        position: absolute;
+        left: -10%;
+        top: -5%;
+        transition: transform .2s ease;
+    }
+
+    .titulo {
+        transform: rotate(180deg);
+        font-weight: 500;
+        font-size: 150px;     /* aumentado para ficar igual ao PDF */
+        position: absolute;
+        bottom: 6.6rem;
+        left: -5rem;          /* movido mais à esquerda */
+        line-height: 0.8;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        color: rgba(255,255,255,0.92);
+        z-index:1;
+        letter-spacing: 4px;
+    }
+
+    .box {
+        background: rgba(0,0,0,0.62);
+        clip-path: polygon(calc(100% - 30px) 0, 100% 30px, 100% calc(100% - 30px),
+            calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px), 0 30px, 30px 0);
+        border-left: 5px solid var(--main-cinza);
+        height: 100%;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* EQUIPAMENTOS */
+    .equipamentos { flex-basis: 32%; display:flex; align-items:stretch; }
+    .montador { width:100%; }
+    .montador-conteudo { padding: 1.2em 8%; padding-top: 0.6em; } /* mais centralizado no topo */
+    .peca { padding: 0.6em 0; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .peca-titulo { color: var(--main-branco); text-transform:uppercase; font-size:1.9em; margin:0; width:40%; }
+
+    .controle {
+        background: var(--main-preto);
+        border-radius: 25px;
+        display: inline-flex;
+        padding: 6px;
+        align-items: center;
+        justify-content:center;
+        width: 42%;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+
+    .controle-contador {
+        width: 48px;
+        height: 40px;
+        background: none;
+        border: 0;
+        color: var(--main-branco);
+        text-align: center;
+        font-size: 2.2em;
+        display: inline-flex;
+        align-items: center;
+        justify-content:center;
+        margin: 0 0.6rem;
+    }
+
+    .controle-ajuste {
+        display: inline-flex;
+        width: 42px;
+        height: 42px;
+        line-height: 44px;
+        border-radius: 50%;
+        color: var(--main-cinza);
+        font-size: 2.2em;
+        background: var(--main-preto);
+        text-align: center;
+        border: 3px solid var(--main-cinza);
+        cursor: pointer;
+        align-items:center;
+        justify-content:center;
+        user-select:none;
+    }
+
+    /* small arrow buttons under robot */
+    .troca-cores {
+        position:absolute;
+        bottom:20px;
+        left:50%;
+        transform:translateX(-50%);
+        display:flex;
+        gap:14px;
+        z-index:3;
+    }
+
+    .troca-cores .controle-ajuste {
+        width:38px;
+        height:38px;
+        font-size:1.6em;
+        border-width:2px;
+        background: rgba(0,0,0,0.5);
+        color: var(--main-branco);
+    }
+
+    .producao {
+        margin-top: 1.2em;
+        font-size: 1.6em;
+        text-transform: uppercase;
+        padding: 0.4em 0.9em;
+        border: 3px solid var(--main-branco);
+        background: var(--main-branco);
+        clip-path: polygon(100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 0);
+        cursor: pointer;
+        color: var(--main-preto);
+        display:inline-block;
+    }
+    .producao:hover { background: var(--main-preto); color: var(--main-branco); }
+
+    /* ESTATÍSTICAS */
+    .estatisticas { flex-basis: 23%; padding: 1.8em 1.8em; display:flex; flex-direction:column; gap:.5rem; align-items:stretch; }
+    .estatistica { color: var(--main-branco); display:flex; align-items:center; height:23%; gap:1rem; }
+    .estatistica-titulo { font-size:1.4em; border-bottom:1px solid var(--main-cinza); flex-basis:40%; text-transform:uppercase; padding-bottom:.2em; }
+    .estatistica-valor { flex-basis:60%; position:relative; display:flex; align-items:center; justify-content:center; }
+    .estatistica-valor::after {
+        content:"";
+        display:block;
+        width:100%;
+        padding-bottom:100%;
+        border: 3px solid var(--main-cinza);
+        border-radius:50%;
+        box-sizing: border-box;
+    }
+    .estatistica-numero {
+        position:absolute;
+        top:50%;
+        transform:translateY(-50%);
+        width:100%;
+        text-align:center;
+        font-size:3.8em; /* aumentado para parecer com o PDF */
+        margin:0;
+        font-weight:500;
+    }
+
+    /* Responsivo */
+    @media screen and (max-width:1400px) {
+        .titulo { font-size:110px; left:-3.5rem; bottom:5.5rem; }
+        .robo { left:-10%; top:-12%; }
+        .estatistica-numero { font-size:3.2em; }
+    }
+
+    @media screen and (max-width:900px) {
+        main { flex-direction:column; width:95vw; height:auto; margin:4vh auto; gap:1rem; }
+        .robotron, .equipamentos, .estatisticas { flex-basis:auto; height:auto; }
+        .titulo { font-size:64px; left:-1.6rem; transform: rotate(180deg); bottom:1.8rem; }
+        .robo { position:relative; left:0; top:0; height:80%; }
+    }
+    </style>
+</head>
+<body>
+
+<main>
+
+    <!-- ÁREA DO ROBÔ -->
+    <div class="robotron box">
+        <img id="robotron" class="robo" src="img/robotron-azul.png" alt="Robotron">
+
+        <!-- Botões de trocar cor -->
+        <div class="troca-cores">
+            <span onclick="voltar()" class="controle-ajuste" title="Cor anterior">&lt;</span>
+            <span onclick="avancar()" class="controle-ajuste" title="Próxima cor">&gt;</span>
+        </div>
+    </div>
+
+    <!-- MONTAGEM DAS PEÇAS -->
+    <div class="equipamentos box">
+        <div class="montador">
+            <div class="montador-conteudo">
+
+                <div class="peca">
+                    <h3 class="peca-titulo">Braços</h3>
+                    <div class="controle" data-index="0">
+                        <span class="controle-ajuste" data-operacao="-">-</span>
+                        <input class="controle-contador" type="text" value="0" readonly>
+                        <span class="controle-ajuste" data-operacao="+">+</span>
+                    </div>
+                </div>
+
+                <div class="peca">
+                    <h3 class="peca-titulo">Blindagem</h3>
+                    <div class="controle" data-index="1">
+                        <span class="controle-ajuste" data-operacao="-">-</span>
+                        <!-- Conforme o PDF seu professor mostrou "4" no Blindagem -->
+                        <input class="controle-contador" type="text" value="4" readonly>
+                        <span class="controle-ajuste" data-operacao="+">+</span>
+                    </div>
+                </div>
+
+                <div class="peca">
+                    <h3 class="peca-titulo">Núcleos</h3>
+                    <div class="controle" data-index="2">
+                        <span class="controle-ajuste" data-operacao="-">-</span>
+                        <input class="controle-contador" type="text" value="0" readonly>
+                        <span class="controle-ajuste" data-operacao="+">+</span>
+                    </div>
+                </div>
+
+                <div class="peca">
+                    <h3 class="peca-titulo">Pernas</h3>
+                    <div class="controle" data-index="3">
+                        <span class="controle-ajuste" data-operacao="-">-</span>
+                        <input class="controle-contador" type="text" value="0" readonly>
+                        <span class="controle-ajuste" data-operacao="+">+</span>
+                    </div>
+                </div>
+
+                <div class="peca">
+                    <h3 class="peca-titulo">Foguetes</h3>
+                    <div class="controle" data-index="4">
+                        <span class="controle-ajuste" data-operacao="-">-</span>
+                        <input class="controle-contador" type="text" value="0" readonly>
+                        <span class="controle-ajuste" data-operacao="+">+</span>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end;">
+                    <button class="producao" id="btnProducao">Iniciar produção</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ESTATÍSTICAS -->
+    <div class="estatisticas box">
+        <div class="estatistica">
+            <div class="estatistica-titulo">Força</div>
+            <div class="estatistica-valor">
+                <p class="estatistica-numero" id="stat-forca">0</p>
+            </div>
+        </div>
+
+        <div class="estatistica">
+            <div class="estatistica-titulo">Poder</div>
+            <div class="estatistica-valor">
+                <p class="estatistica-numero" id="stat-poder">0</p> 
+            </div>
+        </div>
+
+        <div class="estatistica">
+            <div class="estatistica-titulo">Energia</div>
+            <div class="estatistica-valor">
+                <p class="estatistica-numero" id="stat-energia">0</p>
+            </div>
+        </div>
+
+        <div class="estatistica">
+            <div class="estatistica-titulo">Velocidade</div>
+            <div class="estatistica-valor">
+                <p class="estatistica-numero" id="stat-velocidade">0</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<p style="position:fixed; right:12px; bottom:8px; color:rgba(255,255,255,0.8); font-family: Teko;">
+    Modelo: <a href="/mnt/data/Robotron 2000.pdf" style="color:inherit; text-decoration:underline;">Robotron 2000.pdf</a>
+</p>
+
+<script>
+/* ------------------- COR DO ROBÔ ------------------- */
+
+const cores = [
+    "robotron-amarelo.png",
+    "robotron-azul.png",
+    "robotron-branco.png",
+    "robotron-preto.png",
+    "robotron-rosa.png",
+    "robotron-vermelho.png"
+];
+
+let indice = 1; // azul por padrão
+function atualizarRobo() {
+    document.getElementById("robotron").src = "img/" + cores[indice];
+}
+function avancar() {
+    indice = (indice + 1) % cores.length;
+    atualizarRobo();
+}
+function voltar() {
+    indice = (indice - 1 + cores.length) % cores.length;
+    atualizarRobo();
+}
+
+/* ------------------- CONTROLES + E - ------------------- */
+
+const controles = document.querySelectorAll(".controle");
+const estatisticas = [
+    document.getElementById('stat-forca'),
+    document.getElementById('stat-poder'),
+    document.getElementById('stat-energia'),
+    document.getElementById('stat-velocidade')
+];
+
+// Inicializa estatísticas a partir dos controles (aplica somente aos primeiros 4 controles)
+function inicializaEstatisticas() {
+    controles.forEach((controle, idx) => {
+        const campo = controle.querySelector(".controle-contador");
+        if (idx < 4) {
+            estatisticas[idx].textContent = campo.value;
+        }
+    });
+}
+inicializaEstatisticas();
+
+controles.forEach((controle, index) => {
+    const btnMenos = controle.querySelector("[data-operacao='-']");
+    const btnMais  = controle.querySelector("[data-operacao='+']");
+    const campo    = controle.querySelector(".controle-contador");
+
+    btnMenos.addEventListener("click", () => {
+        let v = parseInt(campo.value, 10) || 0;
+        if (v > 0) {
+            campo.value = v - 1;
+            // só atualiza estatísticas para os 4 primeiros controles
+            if (index < 4) estatisticas[index].textContent = campo.value;
+        }
+    });
+
+    btnMais.addEventListener("click", () => {
+        let v = parseInt(campo.value, 10) || 0;
+        if (v < 10) {
+            campo.value = v + 1;
+            if (index < 4) estatisticas[index].textContent = campo.value;
+        }
+    });
+});
+
+/* ------------------- Botão Iniciar Produção (simples feedback) ------------------- */
+document.getElementById('btnProducao').addEventListener('click', () => {
+    // exemplo simples de ação: mostrar resumo em alert
+    const resumo = Array.from(controles).map((c, i) => {
+        const nome = c.closest('.peca')?.querySelector('.peca-titulo')?.textContent || ('Peca ' + (i+1));
+        const val = c.querySelector('.controle-contador').value;
+        return `${nome}; ${val}`;
+    }).join('\n');
+    alert('Produção iniciada com os seguintes valores:\n\n' + resumo);
+});
+</script>
+</body>
+</html>

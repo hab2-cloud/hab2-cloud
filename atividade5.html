@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Escola Virtual - Pré-Matrícula</title>
+</head>
+<body>
+
+    <h2>Escola Virtual</h2>
+    <h3>Formulário de Pré-Matrícula</h3>
+
+    <form id="formulario">
+
+        <fieldset>
+            <legend>Dados Pessoais:</legend>
+
+            Nome do Aluno: <br>
+            <input type="text" id="aluno"><br><br>
+
+            Nascimento (dd/mm/aaaa): <br>
+            <input type="text" id="dia" size="2"> /
+            <input type="text" id="mes" size="2"> /
+            <input type="text" id="ano" size="4"><br><br>
+
+            Nome da Mãe: <br>
+            <input type="text" id="mae"><br><br>
+
+            Nome do Pai: <br>
+            <input type="text" id="pai"><br><br>
+
+            Telefone: DDD ( <input type="text" id="ddd" size="2"> ) 
+            Tel: <input type="text" id="telefone" size="10">
+            Ramal: <input type="text" id="ramal" size="5"><br><br>
+
+            E-mail: <br>
+            <input type="text" id="email"><br><br>
+
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>Informações de Matrícula:</legend>
+
+            Série: <br>
+            <select id="serie">
+                <option value="">Selecione</option>
+                <option value="pré-escolar">pré-escolar</option>
+                <option value="1º ano">1º ano</option>
+                <option value="2º ano">2º ano</option>
+                <option value="3º ano">3º ano</option>
+            </select>
+            <br><br>
+
+            Turno: <br>
+            <input type="radio" name="turno" value="Manhã"> Manhã<br>
+            <input type="radio" name="turno" value="Tarde"> Tarde<br><br>
+
+            Atividades Extracurriculares: <br>
+            <input type="checkbox" class="atividade" value="Informática"> Informática<br>
+            <input type="checkbox" class="atividade" value="Música"> Música<br>
+            <input type="checkbox" class="atividade" value="Balet"> Balet<br>
+            <input type="checkbox" class="atividade" value="Pintura"> Pintura<br>
+            <input type="checkbox" class="atividade" value="Judô"> Judô<br>
+            <input type="checkbox" class="atividade" value="Futebol"> Futebol<br>
+            <br>
+        </fieldset>
+
+        <br>
+
+        <button type="button" onclick="enviar()">Enviar Formulário</button>
+        <button type="reset">Limpa Campos</button>
+
+    </form>
+
+    <p id="mensagem"></p>
+
+<script>
+// Lista simples de DDDs válidos no Brasil
+let dddsValidos = [
+    "11","12","13","14","15","16","17","18","19",
+    "21","22","24",
+    "27","28",
+    "31","32","33","34","35","37","38",
+    "41","42","43","44","45","46",
+    "47","48","49",
+    "51","53","54","55",
+    "61","62","63","64","65","66","67",
+    "68","69",
+    "71","73","74","75","77",
+    "79",
+    "81","82","83","84","85","86","87","88","89",
+    "91","92","93","94","95","96","97","98","99"
+];
+
+function enviar() {
+
+    let aluno = document.getElementById("aluno").value;
+    let dia = document.getElementById("dia").value;
+    let mes = document.getElementById("mes").value;
+    let ano = document.getElementById("ano").value;
+    let mae = document.getElementById("mae").value;
+    let pai = document.getElementById("pai").value;
+    let ddd = document.getElementById("ddd").value;
+    let telefone = document.getElementById("telefone").value;
+    let email = document.getElementById("email").value;
+    let serie = document.getElementById("serie").value;
+
+    let msg = document.getElementById("mensagem");
+
+    // -------------- Validações ------------------
+
+    if (aluno === "" || mae === "" || pai === "" || telefone === "" || serie === "") {
+        msg.innerHTML = "Preencha todos os campos obrigatórios!";
+        return;
+    }
+
+    // Validação de data simples
+    if (dia === "" || mes === "" || ano === "") {
+        msg.innerHTML = "Preencha a data de nascimento!";
+        return;
+    }
+
+    let data = new Date(`${ano}-${mes}-${dia}`);
+
+    if (isNaN(data.getTime())) {
+        msg.innerHTML = "Data de nascimento inválida!";
+        return;
+    }
+
+    // Validação de email simples
+    if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+        msg.innerHTML = "E-mail inválido!";
+        return;
+    }
+
+    // Validação de DDD
+    if (!dddsValidos.includes(ddd)) {
+        msg.innerHTML = "DDD inválido!";
+        return;
+    }
+
+    // Atividades extracurriculares
+    let atividades = document.querySelectorAll(".atividade:checked");
+
+    if (atividades.length === 0) {
+        msg.innerHTML = "Selecione pelo menos 1 atividade!";
+        return;
+    }
+
+    if (atividades.length > 3) {
+        msg.innerHTML = "Selecione no máximo 3 atividades!";
+        return;
+    }
+
+    // Se passou em tudo:
+    msg.innerHTML = "Cadastro realizado com sucesso!";
+}
+</script>
+
+</body>
+</html>
