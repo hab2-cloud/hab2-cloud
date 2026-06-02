@@ -1,9 +1,5 @@
 # Olá, mundo! Eu sou o Hiago👋
 
-<div align="center">
-  <img src="https://capsule-render.vercel.app/type=waving&color=auto&height=200&section=header&text=Estudante%20Full-Stack&fontSize=40&animation=fadeIn" width="100%" />
-</div>
-
 ### 📚 Sobre Mim
 Sou estudante do curso **Técnico em Desenvolvimento de Sistemas** no **IFAL - Campus Maceió**. Estou construindo minha base na programação e explorando o universo Full-Stack, focado em aprender a criar interfaces modernas e APIs eficientes. Adoro desafios de lógica e estou sempre buscando aplicar o que aprendo em projetos práticos.
 
@@ -47,15 +43,6 @@ Sou estudante do curso **Técnico em Desenvolvimento de Sistemas** no **IFAL - C
 
 1. **[Nome do Projeto 1](link-do-repositorio)**: Breve descrição (ex: "Projeto desenvolvido para a disciplina de Web, utilizando HTML e CSS").
 2. **[Nome do Projeto 2](link-do-repositorio)**: Breve descrição (ex: "Algoritmo de automação desenvolvido em lógica de programação").
-
----
-
-### 📊 Estatísticas do Meu GitHub
-
-<div align="center">
-  <img height="160em" src="https://github-readme-stats.vercel.app/api?username=hab2-cloud&show_icons=true&theme=dracula&include_all_commits=true" />
-  <img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=hab2-cloud&layout=compact&theme=dracula" />
-</div>
 
 ---
 
