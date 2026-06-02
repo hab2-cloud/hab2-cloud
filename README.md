@@ -9,6 +9,7 @@ Sou estudante do curso **Técnico em Desenvolvimento de Sistemas** no **IFAL - C
 
 - 🎓 Cursando: Técnico em Desenvolvimento de Sistemas (**IFAL - Campus Maceió**)
 - 🌱 Atualmente focando em: Fundamentos de desenvolvimento web, lógica de programação e arquitetura de software.
+- 🚀 Estilo de Dev: Adepto de **Vibe Coding** (unindo IA e lógica para criar rápido)
 - 💬 Pode me chamar para conversar sobre: Trabalhos do IFAL, desafios de código ou novos aprendizados na área.
 - ⚡ Curiosidade: Transformando as teorias das aulas e muito café em linhas de código funcionais!
 
