@@ -39,10 +39,16 @@ Sou estudante do curso **Técnico em Desenvolvimento de Sistemas** no **IFAL - C
 ---
 
 ### 📂 Projetos em Destaque
-*Aqui você pode listar os projetos que desenvolveu no IFAL ou por fora:*
 
-1. **[Nome do Projeto 1](link-do-repositorio)**: Breve descrição (ex: "Projeto desenvolvido para a disciplina de Web, utilizando HTML e CSS").
-2. **[Nome do Projeto 2](link-do-repositorio)**: Breve descrição (ex: "Algoritmo de automação desenvolvido em lógica de programação").
+#### 🌐 Programação Web (PWEB)
+Uma solução dividida em ecossistemas para gerenciamento e visualização de tarefas cotidianas:
+
+*   **[Dashboard de Tarefas](https://github.com/hab2-cloud/dashboard-tarefas)**: Interface de usuário (Front-End) focada na experiência visual e organização das tarefas.
+*   **[API de Tarefas](https://github.com/hab2-cloud/api-tarefas)**: Serviço de Back-End responsável pelas regras de negócio e persistência do sistema de tarefas.
+*   **[API Dashboard de Tarefas](https://github.com/hab2-cloud/api-dashbord-tarefas)**: Integração e fornecimento de dados específicos para a alimentação dos gráficos e métricas do dashboard.
+
+#### ☕ Programação Orientada a Objetos (POO)
+*   **[Projeto POO](https://github.com/hab2-cloud/projeto-poo)**: Aplicação desenvolvida para consolidar os pilares fundamentais de POO (Abstração, Encapsulamento, Herança e Polimorfismo).
 
 ---
 
