@@ -1,16 +1,64 @@
-## Hi there 👋
+# Olá, mundo! Eu sou o [Seu Nome] 👋
 
-<!--
-**hab2-cloud/hab2-cloud** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<div align="center">
+  <img src="https://capsule-render.vercel.app/type=waving&color=auto&height=200&section=header&text=Estudante%20Full-Stack&fontSize=40&animation=fadeIn" width="100%" />
+</div>
 
-Here are some ideas to get you started:
+### 📚 Sobre Mim
+Sou estudante do curso **Técnico em Desenvolvimento de Sistemas** no **IFAL - Campus Maceió**. Estou construindo minha base na programação e explorando o universo Full-Stack, focado em aprender a criar interfaces modernas e APIs eficientes. Adoro desafios de lógica e estou sempre buscando aplicar o que aprendo em projetos práticos.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- 🎓 Cursando: Técnico em Desenvolvimento de Sistemas (**IFAL - Campus Maceió**)
+- 🌱 Atualmente focando em: Fundamentos de desenvolvimento web, lógica de programação e arquitetura de software.
+- 💬 Pode me chamar para conversar sobre: Trabalhos do IFAL, desafios de código ou novos aprendizados na área.
+- ⚡ Curiosidade: Transformando as teorias das aulas e muito café em linhas de código funcionais!
+
+---
+
+### 🛠️ Tecnologias e Ferramentas
+
+<details open>
+  <summary>💻 Front-End</summary>
+  <br />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+</details>
+
+<details open>
+  <summary>⚙️ Back-End & Banco de Dados</summary>
+  <br />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/SQL-CC292B?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL" />
+</details>
+
+<details open>
+  <summary>🧰 Ferramentas</summary>
+  <br />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Code" />
+</details>
+
+---
+
+### 📂 Projetos em Destaque
+*Aqui você pode listar os projetos que desenvolveu no IFAL ou por fora:*
+
+1. **[Nome do Projeto 1](link-do-repositorio)**: Breve descrição (ex: "Projeto desenvolvido para a disciplina de Web, utilizando HTML e CSS").
+2. **[Nome do Projeto 2](link-do-repositorio)**: Breve descrição (ex: "Algoritmo de automação desenvolvido em lógica de programação").
+
+---
+
+### 📊 Estatísticas do Meu GitHub
+
+<div align="center">
+  <img height="160em" src="https://github-readme-stats.vercel.app/api?username=hab2-cloud&show_icons=true&theme=dracula&include_all_commits=true" />
+  <img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=hab2-cloud&layout=compact&theme=dracula" />
+</div>
+
+---
+
+### 📫 Vamos nos conectar?
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/seu-perfil)
+[![E-mail](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:seu-email@gmail.com)
